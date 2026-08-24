@@ -131,20 +131,10 @@ export default function Header() {
             className="flex items-center gap-3"
           >
             <img
-              src="https://www.classificadosjoinville.com.br/imagens/empresa_servico/caca-vazamento-joinville-joinville-sc-1352-1-g.jpg"
+              src="/logo.png"
               alt="Caça Vazamento"
               className="h-11 w-auto"
             />
-
-            <div className="hidden sm:block">
-              <span className="block text-lg font-extrabold leading-none tracking-tight text-slate-950">
-                Caça Vazamento
-              </span>
-
-              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.18em] text-sky-600">
-                Detecção de vazamentos
-              </span>
-            </div>
           </Link>
 
           {/* DESKTOP NAV */}

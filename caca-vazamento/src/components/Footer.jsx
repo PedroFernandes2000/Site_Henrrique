@@ -134,20 +134,10 @@ export default function Footer() {
           <div>
             <Link to="/" className="inline-flex items-center gap-3">
               <img
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Caça Vazamento"
                 className="h-12 w-auto"
               />
-
-              <div>
-                <span className="block text-lg font-extrabold leading-none">
-                  Caça Vazamento
-                </span>
-
-                <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.17em] text-sky-400">
-                  Detecção de vazamentos
-                </span>
-              </div>
             </Link>
 
             <p className="mt-6 max-w-sm text-sm leading-7 text-slate-400">
