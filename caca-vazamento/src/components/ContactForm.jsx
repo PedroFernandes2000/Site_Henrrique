@@ -12,7 +12,7 @@ export default function ContactForm() {
     console.log(data);
     // Aqui você pode enviar para API, e-mail ou formatar para WhatsApp
     const message = `Nome: ${data.name}\nTelefone: ${data.phone}\nServiço: ${data.service}\nMensagem: ${data.message}`;
-    window.open(`https://wa.me/5511945697129?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/5511994820656?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (

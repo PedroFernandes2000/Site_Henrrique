@@ -5,22 +5,22 @@ import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsappButton from '../components/WhatsappButton';
-import ServiceLayout from '../layouts/ServiceLayouts';
-import { servicePages } from '../data/servicePages';
+import AtendimentoLayout from '../layouts/AtendimentoLayout';
+import { atendimentoPages } from '../data/atendimentoPages';
 
-export default function Service() {
+export default function Atendimento() {
   const { slug } = useParams();
-  const page = servicePages.find((item) => item.slug === slug);
+  const page = atendimentoPages.find((item) => item.slug === slug);
 
   if (page) {
-    return <ServiceLayout page={page} type="servico" />;
+    return <AtendimentoLayout page={page} />;
   }
 
   return (
     <>
       <Helmet>
-        <title>Serviços | Caça Vazamento</title>
-        <meta name="description" content="Conheça os serviços de detecção de vazamentos com tecnologia de ponta." />
+        <title>Atendimento | Caça Vazamento</title>
+        <meta name="description" content="Conheça os tipos de atendimento oferecidos para residências, empresas e instituições." />
       </Helmet>
 
       <Header />
@@ -29,18 +29,18 @@ export default function Service() {
         <section className="relative overflow-hidden bg-[#06152d] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_35%,rgba(14,165,233,0.3),transparent_25%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-20">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-sky-300">Serviços</p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">Soluções para cada tipo de vazamento</h1>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-sky-300">Atendimento</p>
+            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">Atendimento pensado para cada tipo de cliente</h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
-              Diagnóstico técnico preciso, atendimento rápido e soluções com menor impacto para imóveis, condomínios e empresas.
+              Soluções rápidas e técnicas para residências, condomínios, empresas e instituições com atendimento profissional e seguro.
             </p>
           </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-20">
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {servicePages.map(({ slug: serviceSlug, title, description, icon: Icon, label }) => (
-              <div key={serviceSlug} className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+            {atendimentoPages.map(({ slug: atendimentoSlug, title, description, icon: Icon, label }) => (
+              <div key={atendimentoSlug} className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-5 inline-flex rounded-2xl bg-sky-100 p-3 text-sky-700">
                   <Icon className="h-6 w-6" />
                 </div>
@@ -50,7 +50,7 @@ export default function Service() {
 
                 <div className="mt-6 flex items-center gap-2 text-sm font-bold text-sky-700">
                   <CheckCircle2 className="h-4 w-4" />
-                  <Link to={`/servicos/${serviceSlug}`} className="inline-flex items-center gap-2">
+                  <Link to={`/atendimento/${atendimentoSlug}`} className="inline-flex items-center gap-2">
                     Ver detalhes
                     <ArrowRight className="h-4 w-4" />
                   </Link>

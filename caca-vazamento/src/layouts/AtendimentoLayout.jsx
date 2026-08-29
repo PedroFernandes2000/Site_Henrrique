@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Droplets, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Phone, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,11 +7,8 @@ import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
 import WhatsappButton from '../components/WhatsappButton';
 
-export default function ServiceLayout({ page, type = 'servico' }) {
-  const Icon = page.icon ?? Droplets;
-  const sectionLabel = type === 'servico' ? 'Serviços' : 'Atendimento';
-  const backPath = type === 'servico' ? '/servicos' : '/atendimento';
-  const backLabel = type === 'servico' ? 'Voltar para serviços' : 'Voltar para atendimento';
+export default function AtendimentoLayout({ page }) {
+  const Icon = page.icon;
 
   return (
     <>
@@ -22,12 +19,12 @@ export default function ServiceLayout({ page, type = 'servico' }) {
 
       <Header />
 
-      <main className="bg-white pt-20">
+      <main className="bg-white pt-20 mt-2">
         <section className="relative overflow-hidden bg-[#06152d] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(14,165,233,0.4),transparent_30%)]" />
           <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-sky-300">{sectionLabel}</p>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-sky-300">Atendimento</p>
               <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">{page.title}</h1>
               <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">{page.description}</p>
 
@@ -36,14 +33,14 @@ export default function ServiceLayout({ page, type = 'servico' }) {
                   to="/contato"
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-400"
                 >
-                  Solicitar diagnóstico
+                  Falar com a equipe
                   <ArrowRight size={18} />
                 </Link>
                 <Link
-                  to={backPath}
+                  to="/atendimento"
                   className="inline-flex items-center justify-center rounded-md border border-white/50 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-slate-900"
                 >
-                  {backLabel}
+                  Voltar para atendimento
                 </Link>
               </div>
             </div>
@@ -70,8 +67,8 @@ export default function ServiceLayout({ page, type = 'servico' }) {
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-4">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600">Como funciona</p>
-              <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">Diagnóstico eficiente, seguro e sem complicação</h2>
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600">Como atendemos</p>
+              <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">Estrutura, agilidade e atenção para cada tipo de cliente</h2>
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -95,24 +92,24 @@ export default function ServiceLayout({ page, type = 'servico' }) {
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Vantagens do atendimento</h3>
               <ul className="mt-6 space-y-4 text-slate-700">
-                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Diagnóstico preciso com tecnologia e experiência.</li>
-                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Menor invasão e maior cuidado com o imóvel ou local.</li>
-                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Orientação técnica clara para a próxima etapa.</li>
+                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Respostas rápidas e orientação técnica clara.</li>
+                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Atendimento compatível com o seu tipo de imóvel ou operação.</li>
+                <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" /> Soluções pensadas para reduzir riscos e prejuízos.</li>
               </ul>
             </div>
 
             <div>
-              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600">Atendimento</p>
-              <h2 className="mt-3 text-3xl font-black text-slate-900">Precisa de ajuda agora?</h2>
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600">Fale conosco</p>
+              <h2 className="mt-3 text-3xl font-black text-slate-900">Tem uma demanda específica?</h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">
-                Nossa equipe atende com rapidez, identifica a origem do problema e orienta a melhor solução para proteger seu imóvel, condomínio ou empresa.
+                Descreva seu caso e nossa equipe vai orientar a melhor solução para sua realidade, com agilidade e atenção profissional.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="tel:+5511994820656" className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800">
                   <Phone size={16} className="text-sky-600" />
                   (11) 99482-0656
                 </a>
-                <a href="https://wa.me/5511994820656?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico." target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-3 text-sm font-semibold text-white">
+                <a href="https://wa.me/5511994820656?text=Ol%C3%A1%2C%20quero%20solicitar%20atendimento%20para%20o%20meu%20caso." target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-3 text-sm font-semibold text-white">
                   WhatsApp
                 </a>
               </div>

@@ -10,53 +10,83 @@ import {
   MessageCircle,
   Clock3,
   ShieldCheck,
+  DollarSign,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const WHATSAPP_NUMBER = '5511945697129';
-const PHONE_NUMBER = '+55 11 94569-7129';
+const WHATSAPP_NUMBER = '5511994820656';
+const PHONE_NUMBER = '+55 11 99482-0656';
 
-const navItems = [
-  { name: 'Início', to: '/' },
-  { name: 'Serviços', to: '/servicos' },
-  { name: 'Sobre', to: '/sobre' },
-  { name: 'Blog', to: '/blog' },
-  { name: 'Contato', to: '/contato' },
+
+
+const serviceMenuColumns = [
+  {
+    title: 'CONTRATOS E FERRAMENTAS',
+    items: [
+      { name: 'Manutenção Preventiva', to: '/servicos/manutencao-preventiva' },
+      { name: 'Licitações e Órgãos Públicos', to: '/servicos/licitacoes-e-orgaos-publicos' },
+    ],
+    footerLink: { name: 'Ver todos os serviços →', to: '/servicos' },
+  },
+  
+  {
+    title: 'LIMPEZA E SUCÇÃO',
+    items: [
+      { name: 'Hidrojateamento', to: '/servicos/hidrojateamento' },
+      { name: 'Limpeza de Caixa de Gordura', to: '/servicos/limpeza-de-caixa-de-gordura' },
+      { name: 'Limpeza de Fossa', to: '/servicos/limpeza-de-fossa' },
+      { name: 'Sucção de Lodo e Resíduos', to: '/servicos/succao-de-lodo-e-residuos' },
+      {name: 'Limpeza de Galerias', to: '/servicos/limpeza-de-galerias'},
+    ],
+  },
+  {
+
+    title: 'DESENTUPIMENTO',
+    items: [
+      { name: 'Desentupimento de Canos', to: '/servicos/desentupimento-de-canos' },
+      { name: 'Desentupimento de Colunas', to: '/servicos/desentupimento-de-colunas' },
+      { name: 'Desentupimento de Esgoto', to: '/servicos/desentupimento-de-esgoto' },
+      { name: 'Desentupimento de Pia', to: '/servicos/desentupimento-de-pia' },
+      { name: 'Desentupimento de Ralos', to: '/servicos/desentupimento-de-ralos' },
+      { name: 'Redes de Águas Pluviais', to: '/servicos/redes-de-aguas-pluviais' },
+      { name: 'Desentupimento de Tanque', to: '/servicos/desentupimento-de-tanque' },
+      { name: 'Vasos Sanitários', to: '/servicos/vasos-sanitarios' },
+    ],
+  },
+  
+
 ];
 
-const serviceItems = [
+const atendimentoMenuColumns = [
   {
-    name: 'Caça-vazamento residencial',
-    to: '/servicos/caca-vazamento-residencial',
+    title: 'RESIDENCIAL E COMERCIAL',
+    items: [
+      { name: 'Residenciais', to: '/atendimento/residencial' },
+      { name: 'Condomínios', to: '/atendimento/condominios' },
+      { name: 'Empresas', to: '/atendimento/empresas' },
+    ],
   },
   {
-    name: 'Vazamento em parede',
-    to: '/servicos/vazamento-em-parede',
+    title: 'COMÉRCIO E SERVIÇOS',
+    items: [
+      { name: 'Indústrias', to: '/atendimento/industrias' },
+      { name: 'Restaurantes', to: '/atendimento/restaurantes' },
+      { name: 'Cozinhas Industriais', to: '/atendimento/cozinhas-industriais' },
+    ],
   },
   {
-    name: 'Vazamento em piso',
-    to: '/servicos/vazamento-em-piso',
-  },
-  {
-    name: 'Vazamento oculto',
-    to: '/servicos/vazamento-oculto',
-  },
-  {
-    name: 'Vazamento em apartamento',
-    to: '/servicos/vazamento-em-apartamento',
-  },
-  {
-    name: 'Laudo técnico',
-    to: '/servicos/laudo-tecnico',
+    title: 'INSTITUIÇÕES',
+    items: [
+      { name: 'Órgãos Públicos', to: '/atendimento/orgaos-publicos' },
+      { name: 'Clínicas', to: '/atendimento/clinicas' },
+      { name: 'Hospitais', to: '/atendimento/hospitais' },
+      { name: 'Laboratórios', to: '/atendimento/laboratorios' },
+      { name: 'Escolas e Creches', to: '/atendimento/escolas-e-creches' },
+    ],
   },
 ];
 
-const atendimentoItems = [
-  { name: 'Residências e apartamentos', to: '/atendimento/residencial' },
-  { name: 'Condomínios', to: '/atendimento/condominios' },
-  { name: 'Comércios', to: '/atendimento/comercios' },
-  { name: 'Empresas', to: '/atendimento/empresas' },
-];
+const atendimentoItems = atendimentoMenuColumns.flatMap((column) => column.items);
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -70,7 +100,7 @@ export default function Header() {
   };
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Olá! Gostaria de solicitar atendimento para um possível vazamento.'
+    'Olá! Gostaria de solicitar atendimento e um orçamento.'
   )}`;
 
   return (
@@ -88,18 +118,23 @@ export default function Header() {
 
             <span className="flex items-center gap-2">
               <ShieldCheck size={14} className="text-sky-400" />
-              Profissionais preparados
+              Profissionais qualificados e identificados
             </span>
 
-            <span className="hidden lg:flex items-center gap-2">
+            <span className="flex items-center gap-2">
+              <DollarSign size={14} className="text-sky-400" />
+              Sem taxa de visita
+            </span>
+
+            <span className="hidden items-center gap-2 lg:flex">
               <span className="h-2 w-2 rounded-full bg-green-400" />
-              Solicite seu orçamento
+              Atendimento 24 horas
             </span>
           </div>
 
           <div className="flex items-center gap-5">
             <a
-              href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
+              href={whatsappUrl}
               className="flex items-center gap-2 text-xs font-bold text-white transition hover:text-sky-400"
             >
               <Phone size={14} />
@@ -130,51 +165,50 @@ export default function Header() {
             onClick={closeMobileMenu}
             className="flex items-center gap-3"
           >
-            <img
+            
+             <img
               src="/logo.png"
               alt="Caça Vazamento"
-              className="h-11 w-auto"
+              className=" h-19 w-auto"
             />
           </Link>
 
           {/* DESKTOP NAV */}
           <div className="hidden items-center lg:flex">
-            <div className="flex items-center gap-7">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `relative text-sm font-semibold transition-colors ${
-                    isActive
-                      ? 'text-sky-600'
-                      : 'text-slate-600 hover:text-sky-600'
-                  }`
-                }
+            <div className="flex items-center gap-6 xl:gap-7">
+              
+              {/* =================================================
+                  SERVIÇOS / MEGA MENU
+              ================================================== */}
+              <div
+                className="relative"
+                onMouseEnter={() => {
+                  setServicesOpen(true);
+                  setAtendimentoOpen(false);
+                }}
+                onMouseLeave={() => setServicesOpen(false)}
               >
-                Início
-              </NavLink>
-
-              {/* SERVIÇOS */}
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setServicesOpen((value) => !value);
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onFocus={() => {
+                    setServicesOpen(true);
                     setAtendimentoOpen(false);
                   }}
-                  className={`flex items-center gap-1.5 text-sm font-semibold transition-colors ${
-                    servicesOpen
+                  onBlur={() => setServicesOpen(false)}
+                  aria-expanded={servicesOpen}
+                  className={`flex cursor-pointer items-center gap-1.5 text-sm font-semibold transition-colors ${servicesOpen
                       ? 'text-sky-600'
                       : 'text-slate-600 hover:text-sky-600'
-                  }`}
+                    }`}
                 >
                   Serviços
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${
-                      servicesOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''
+                      }`}
                   />
-                </button>
+                </div>
 
                 <AnimatePresence>
                   {servicesOpen && (
@@ -183,76 +217,78 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.18 }}
-                      className="absolute left-1/2 top-full mt-5 w-80 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl"
+                      className="fixed left-1/2 top-[78px] w-[min(1030px,calc(100vw-32px))] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
                     >
-                      <div className="mb-2 border-b border-slate-100 px-3 pb-3">
-                        <p className="text-xs font-bold uppercase tracking-wider text-sky-600">
-                          Serviços
-                        </p>
+                      <div className="grid grid-cols-1 gap-0 md:grid-cols-2 xl:grid-cols-3">
+                        {serviceMenuColumns.map((column) => (
+                          <div
+                            key={column.title}
+                            className="min-h-[280px] border-b border-slate-200 px-6 py-6 xl:border-b-0 xl:border-r xl:last:border-r-0"
+                          >
+                            <div className="border-b border-slate-200 pb-3">
+                              <p className="text-xs font-extrabold tracking-wider text-sky-600">
+                                {column.title}
+                              </p>
+                            </div>
 
-                        <p className="mt-1 text-xs text-slate-500">
-                          Encontre o serviço adequado para o seu problema.
-                        </p>
+                            <div className="pt-2">
+                              {column.items.map((item) => (
+                                <Link
+                                  key={item.to}
+                                  to={item.to}
+                                  onClick={() => setServicesOpen(false)}
+                                  className="block rounded-lg py-2.5 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-sky-600"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+
+                            {column.footerLink && (
+                              <Link
+                                to={column.footerLink.to}
+                                onClick={() => setServicesOpen(false)}
+                                className="mt-2 inline-block pt-1 text-sm font-semibold text-slate-800 transition hover:text-sky-600"
+                              >
+                                {column.footerLink.name}
+                              </Link>
+                            )}
+                          </div>
+                        ))}
                       </div>
-
-                      {serviceItems.map((item) => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          onClick={() => setServicesOpen(false)}
-                          className="block rounded-xl px-3 py-3 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-700"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-
-                      <Link
-                        to="/servicos"
-                        onClick={() => setServicesOpen(false)}
-                        className="mt-2 block rounded-xl bg-slate-950 px-3 py-3 text-center text-sm font-bold text-white transition hover:bg-slate-800"
-                      >
-                        Ver todos os serviços →
-                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              <NavLink
-                to="/sobre"
-                className={({ isActive }) =>
-                  `text-sm font-semibold transition-colors ${
-                    isActive
-                      ? 'text-sky-600'
-                      : 'text-slate-600 hover:text-sky-600'
-                  }`
-                }
+              <div
+                className="relative"
+                onMouseEnter={() => {
+                  setAtendimentoOpen(true);
+                  setServicesOpen(false);
+                }}
+                onMouseLeave={() => setAtendimentoOpen(false)}
               >
-                Sobre
-              </NavLink>
-
-              {/* ATENDIMENTO */}
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setAtendimentoOpen((value) => !value);
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onFocus={() => {
+                    setAtendimentoOpen(true);
                     setServicesOpen(false);
                   }}
-                  className={`flex items-center gap-1.5 text-sm font-semibold transition-colors ${
-                    atendimentoOpen
+                  onBlur={() => setAtendimentoOpen(false)}
+                  aria-expanded={atendimentoOpen}
+                  className={`flex cursor-pointer items-center gap-1.5 text-sm font-semibold transition-colors ${atendimentoOpen
                       ? 'text-sky-600'
                       : 'text-slate-600 hover:text-sky-600'
-                  }`}
+                    }`}
                 >
-                  Atendimento
+                  Para Quem Atendemos
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${
-                      atendimentoOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`transition-transform duration-200 ${atendimentoOpen ? 'rotate-180' : ''}`}
                   />
-                </button>
+                </div>
 
                 <AnimatePresence>
                   {atendimentoOpen && (
@@ -261,53 +297,58 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.18 }}
-                      className="absolute left-1/2 top-full mt-5 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl"
+                      className="fixed left-1/2 top-[78px] w-[min(920px,calc(100vw-32px))] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
                     >
-                      <div className="mb-2 border-b border-slate-100 px-3 pb-3">
-                        <p className="text-xs font-bold uppercase tracking-wider text-sky-600">
-                          Para quem atendemos
-                        </p>
+                      <div className="grid grid-cols-1 gap-0 md:grid-cols-2 xl:grid-cols-3">
+                        {atendimentoMenuColumns.map((column) => (
+                          <div
+                            key={column.title}
+                            className="min-h-[220px] border-b border-slate-200 px-6 py-6 xl:border-b-0 xl:border-r xl:last:border-r-0"
+                          >
+                            <div className="border-b border-slate-200 pb-3">
+                              <p className="text-xs font-extrabold tracking-wider text-sky-600">
+                                {column.title}
+                              </p>
+                            </div>
 
-                        <p className="mt-1 text-xs text-slate-500">
-                          Soluções para diferentes tipos de imóveis.
-                        </p>
+                            <div className="pt-2">
+                              {column.items.map((item) => (
+                                <Link
+                                  key={item.to}
+                                  to={item.to}
+                                  onClick={() => setAtendimentoOpen(false)}
+                                  className="block rounded-lg py-2.5 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-sky-600"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                       </div>
-
-                      {atendimentoItems.map((item) => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          onClick={() => setAtendimentoOpen(false)}
-                          className="block rounded-xl px-3 py-3 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-700"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
               <NavLink
-                to="/blog"
+                to="/depoimentos"
                 className={({ isActive }) =>
-                  `text-sm font-semibold transition-colors ${
-                    isActive
-                      ? 'text-sky-600'
-                      : 'text-slate-600 hover:text-sky-600'
+                  `text-sm font-semibold transition-colors ${isActive
+                    ? 'text-sky-600'
+                    : 'text-slate-600 hover:text-sky-600'
                   }`
                 }
               >
-                Blog
+                Depoimentos
               </NavLink>
 
               <NavLink
                 to="/contato"
                 className={({ isActive }) =>
-                  `text-sm font-semibold transition-colors ${
-                    isActive
-                      ? 'text-sky-600'
-                      : 'text-slate-600 hover:text-sky-600'
+                  `text-sm font-semibold transition-colors ${isActive
+                    ? 'text-sky-600'
+                    : 'text-slate-600 hover:text-sky-600'
                   }`
                 }
               >
@@ -316,23 +357,15 @@ export default function Header() {
             </div>
 
             {/* CTA */}
-            <div className="ml-8 flex items-center gap-3">
-              <a
-                href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
-                className="flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:border-sky-200 hover:text-sky-600"
-              >
-                <Phone size={16} />
-                Ligar
-              </a>
-
+            <div className="ml-7 xl:ml-8">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full bg-green-500 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-green-600 hover:shadow-md"
+                className="flex items-center gap-2 rounded-md bg-sky-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-sky-700 hover:shadow-md"
               >
-                <MessageCircle size={17} />
-                WhatsApp
+                <CalendarDaysIcon />
+                Solicitar Orçamento
               </a>
             </div>
           </div>
@@ -361,18 +394,24 @@ export default function Header() {
               transition={{ duration: 0.25 }}
               className="overflow-hidden border-t border-slate-100 bg-white lg:hidden"
             >
-              <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6">
+              <div className="mx-auto max-h-[calc(100vh-116px)] max-w-7xl overflow-y-auto px-4 py-5 sm:px-6">
                 <div className="space-y-1">
-                  {navItems.map((item) => (
+                  {[
+                    { name: 'Início', to: '/' },
+                    { name: 'Sobre Nós', to: '/sobre' },
+                    { name: 'Tecnologia', to: '/tecnologia' },
+                    { name: 'Diferenciais', to: '/diferenciais' },
+                    { name: 'Depoimentos', to: '/depoimentos' },
+                    { name: 'Contato', to: '/contato' },
+                  ].map((item) => (
                     <NavLink
                       key={item.to}
                       to={item.to}
                       onClick={closeMobileMenu}
                       className={({ isActive }) =>
-                        `block rounded-xl px-4 py-3 text-base font-semibold transition ${
-                          isActive
-                            ? 'bg-sky-50 text-sky-600'
-                            : 'text-slate-700 hover:bg-slate-50'
+                        `block rounded-xl px-4 py-3 text-base font-semibold transition ${isActive
+                          ? 'bg-sky-50 text-sky-600'
+                          : 'text-slate-700 hover:bg-slate-50'
                         }`
                       }
                     >
@@ -385,15 +424,15 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => setServicesOpen((value) => !value)}
+                      aria-expanded={servicesOpen}
                       className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-semibold text-slate-700"
                     >
                       <span>Serviços</span>
 
                       <ChevronDown
                         size={18}
-                        className={`transition-transform ${
-                          servicesOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`transition-transform ${servicesOpen ? 'rotate-180' : ''
+                          }`}
                       />
                     </button>
 
@@ -405,16 +444,39 @@ export default function Header() {
                           exit={{ height: 0, opacity: 0 }}
                           className="overflow-hidden"
                         >
-                          <div className="border-t border-slate-100 px-3 py-2">
-                            {serviceItems.map((item) => (
-                              <Link
-                                key={item.to}
-                                to={item.to}
-                                onClick={closeMobileMenu}
-                                className="block rounded-lg px-3 py-2.5 text-sm text-slate-600 transition hover:bg-sky-50 hover:text-sky-600"
+                          <div className="border-t border-slate-100 px-3 py-3">
+                            {serviceMenuColumns.map((column) => (
+                              <div
+                                key={column.title}
+                                className="border-b border-slate-100 py-3 last:border-b-0"
                               >
-                                {item.name}
-                              </Link>
+                                <p className="px-1 text-xs font-extrabold tracking-wider text-sky-600">
+                                  {column.title}
+                                </p>
+
+                                <div className="mt-1">
+                                  {column.items.map((item) => (
+                                    <Link
+                                      key={item.to}
+                                      to={item.to}
+                                      onClick={closeMobileMenu}
+                                      className="block rounded-lg px-2 py-2.5 text-sm text-slate-600 transition hover:bg-sky-50 hover:text-sky-600"
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ))}
+                                </div>
+
+                                {column.footerLink && (
+                                  <Link
+                                    to={column.footerLink.to}
+                                    onClick={closeMobileMenu}
+                                    className="mt-1 block rounded-lg px-2 py-2.5 text-sm font-semibold text-slate-800 transition hover:bg-sky-50 hover:text-sky-600"
+                                  >
+                                    {column.footerLink.name}
+                                  </Link>
+                                )}
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -426,18 +488,15 @@ export default function Header() {
                   <div className="rounded-xl border border-slate-100">
                     <button
                       type="button"
-                      onClick={() =>
-                        setAtendimentoOpen((value) => !value)
-                      }
+                      onClick={() => setAtendimentoOpen((value) => !value)}
+                      aria-expanded={atendimentoOpen}
                       className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-semibold text-slate-700"
                     >
-                      <span>Atendimento</span>
+                      <span>Para Quem Atendemos</span>
 
                       <ChevronDown
                         size={18}
-                        className={`transition-transform ${
-                          atendimentoOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`transition-transform ${atendimentoOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
 
@@ -449,16 +508,29 @@ export default function Header() {
                           exit={{ height: 0, opacity: 0 }}
                           className="overflow-hidden"
                         >
-                          <div className="border-t border-slate-100 px-3 py-2">
-                            {atendimentoItems.map((item) => (
-                              <Link
-                                key={item.to}
-                                to={item.to}
-                                onClick={closeMobileMenu}
-                                className="block rounded-lg px-3 py-2.5 text-sm text-slate-600 transition hover:bg-sky-50 hover:text-sky-600"
+                          <div className="border-t border-slate-100 px-3 py-3">
+                            {atendimentoMenuColumns.map((column) => (
+                              <div
+                                key={column.title}
+                                className="border-b border-slate-100 py-3 last:border-b-0"
                               >
-                                {item.name}
-                              </Link>
+                                <p className="px-1 text-xs font-extrabold tracking-wider text-sky-600">
+                                  {column.title}
+                                </p>
+
+                                <div className="mt-1">
+                                  {column.items.map((item) => (
+                                    <Link
+                                      key={item.to}
+                                      to={item.to}
+                                      onClick={closeMobileMenu}
+                                      className="block rounded-lg px-2 py-2.5 text-sm text-slate-600 transition hover:bg-sky-50 hover:text-sky-600"
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -468,7 +540,7 @@ export default function Header() {
                 </div>
 
                 {/* MOBILE CTA */}
-                <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   <a
                     href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
                     className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 font-bold text-slate-700"
@@ -481,10 +553,10 @@ export default function Header() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-green-500 px-4 py-3 font-bold text-white"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 py-3 font-bold text-white"
                   >
                     <MessageCircle size={18} />
-                    WhatsApp
+                    Solicitar Orçamento
                   </a>
                 </div>
               </div>
@@ -493,5 +565,31 @@ export default function Header() {
         </AnimatePresence>
       </div>
     </header>
+  );
+}
+
+function CalendarDaysIcon() {
+  return (
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 3V6M17 3V6M4 9H20M5 5H19C19.5523 5 20 5.44772 20 6V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V6C4 5.44772 4.44772 5 5 5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8 13H10M14 13H16M8 16H10M14 16H16"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }

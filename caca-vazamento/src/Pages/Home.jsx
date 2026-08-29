@@ -226,7 +226,7 @@ export default function Home() {
                         'Olá! Gostaria de solicitar um orçamento para caça vazamento.'
                       )
                     }
-                    className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-500 px-6 py-4 text-sm font-extrabold text-white shadow-lg transition hover:bg-blue-600"
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-500 px-6 py-4 text-sm  text-white shadow-lg transition hover:bg-blue-600"
                   >
                     <CalendarDays size={18} />
                     Solicitar Orçamento
@@ -234,7 +234,7 @@ export default function Home() {
 
                   <Link
                     to="/servicos"
-                    className="inline-flex items-center justify-center gap-3 rounded-md border border-white/60 px-6 py-4 text-sm font-extrabold text-white transition hover:bg-white hover:text-slate-950"
+                    className="inline-flex items-center justify-center gap-3 rounded-md border border-white/60 px-6 py-4 text-sm  text-white transition hover:bg-white hover:text-slate-950"
                   >
                     Nossos Serviços
                     <ArrowRight size={18} />
