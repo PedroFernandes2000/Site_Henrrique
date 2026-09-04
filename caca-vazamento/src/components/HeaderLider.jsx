@@ -167,7 +167,7 @@ export default function Header() {
           >
             
              <img
-              src="/lider.png"
+              src="/logolider.png"
               alt="Caça Vazamento"
               className=" h-19 w-auto"
             />
