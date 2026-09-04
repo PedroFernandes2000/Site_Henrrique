@@ -161,13 +161,13 @@ export default function Header() {
         <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* LOGO */}
           <Link
-            to="/lider"
+            to="/"
             onClick={closeMobileMenu}
             className="flex items-center gap-3"
           >
             
              <img
-              src="/logo.png"
+              src="/lider.png"
               alt="Caça Vazamento"
               className=" h-19 w-auto"
             />

@@ -26,11 +26,11 @@ import {
   Quote,
 } from 'lucide-react';
 
-import Header from '../components/Header';
+import Header from '../components/HeaderLider';
 import Footer from '../components/Footer';
 import WhatsappButton from '../components/WhatsappButton';
 
-const WHATSAPP_NUMBER = '5511994820656';
+const WHATSAPP_NUMBER = '5511966079201';
 
 function openWhatsapp(message) {
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -152,7 +152,7 @@ function SectionTitle({ eyebrow, title, centered = false }) {
   );
 }
 
-export default function Home() {
+export default function HomeLider() {
   return (
     <>
       <Helmet>
@@ -173,7 +173,7 @@ export default function Home() {
             '@type': 'LocalBusiness',
             name: 'Caça Vazamentos',
             image: 'https://seusite.com.br/logo.svg',
-            telephone: '+5511994820656',
+            telephone: '+5511966079201',
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'São Paulo',
@@ -574,11 +574,11 @@ export default function Home() {
               </button>
 
               <a
-                href="tel:+5511994820656"
+                href="tel:+5511966079201"
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-7 py-4 text-sm font-extrabold transition hover:bg-white hover:text-slate-950"
               >
                 <Phone size={18} />
-                (11) 99482-0656
+                (11) 96607-9201
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('../Pages/Home'));
+const HomeLider = lazy(() => import('../Pages/HomeLider'));
 const Servicos = lazy(() => import('../Pages/Service'));
 const Atendimento = lazy(() => import('../Pages/Atendimento'));
 const Depoimentos = lazy(() => import('../Pages/Depoimentos'));
@@ -13,6 +14,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path='/lider' element={<HomeLider />} />
       <Route path="/servicos" element={<Servicos />} />
       <Route path="/servicos/:slug" element={<Servicos />} />
       <Route path="/atendimento" element={<Atendimento />} />
